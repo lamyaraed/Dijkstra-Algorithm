@@ -167,8 +167,15 @@ public class GraphGUI {
     }
 
     void getAnswer(Vector<Integer> Answer){
-        for(int i: Answer){
-            ResultGraph.add(i);
+        if (Answer == null) {
+            JOptionPane.showMessageDialog(frame, "There is no path from source to destination",
+                    "Error", JOptionPane.WARNING_MESSAGE);
+
+
+        } else {
+            for (int i : Answer) {
+                ResultGraph.add(i);
+            }
         }
     }
 

@@ -20,7 +20,7 @@ public class Utils {
         }
     }
 
-    int minDistance(Graph graph,int dist[], Boolean sptSet[])
+    int minDistance(Graph graph, int[] dist, Boolean[] sptSet)
     {
         // Initialize min value
         int min = Integer.MAX_VALUE, min_index = -1;
@@ -43,12 +43,12 @@ public class Utils {
         print[] p = new print[g.Vertex];
         initializePrint(g,p);
         int temp = 0;
-        int dist[] = new int[g.Vertex]; // The output array. dist[i] will hold
+        int[] dist = new int[g.Vertex]; // The output array. dist[i] will hold
         // the shortest distance from src to i
 
         // sptSet[i] will true if vertex i is included in shortest
         // path tree or shortest distance from src to i is finalized
-        Boolean sptSet[] = new Boolean[g.Vertex];
+        Boolean[] sptSet = new Boolean[g.Vertex];
 
         // Initialize all distances as INFINITE and stpSet[] as false
         for (int i = 0; i < g.Vertex; i++) {
@@ -110,7 +110,7 @@ public class Utils {
         return 0;
     }
 
-    void printSolution(int dist[], Graph g)
+    void printSolution(int[] dist, Graph g)
     {
         System.out.println("Vertex \t\t Distance from Source");
         for (int i = 0; i < g.Vertex; i++)
@@ -126,6 +126,10 @@ public class Utils {
     Vector<Integer> GetEndPath(print[]p){
         Vector<Integer>ans = new Vector<>();
         int prevNode = p[end].PreviousVertex;
+        if (prevNode == Integer.MAX_VALUE) {
+            System.out.println("There is no path");
+            return null;
+        }
         ans.add(end);
         ans.add(prevNode);
         while(prevNode != start){
