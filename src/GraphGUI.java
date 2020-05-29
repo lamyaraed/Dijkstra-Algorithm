@@ -57,13 +57,14 @@ public class GraphGUI {
     }
 
     void drawFrame(){
+        Counter = 0;
         frame = new JFrame();
         frame.setName("Graph");
         frame.getContentPane().add(vs);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(new Dimension(450,450));
         buttonNext = new JButton("Next");
-        buttonNext.setEnabled(true);
+        buttonNext.setEnabled(false);
         frame.add(buttonNext, BorderLayout.SOUTH);
         frame.pack();
         frame.setVisible(true);
@@ -170,12 +171,11 @@ public class GraphGUI {
         if (Answer == null) {
             JOptionPane.showMessageDialog(frame, "There is no path from source to destination",
                     "Error", JOptionPane.WARNING_MESSAGE);
-
-
         } else {
             for (int i : Answer) {
                 ResultGraph.add(i);
             }
+            buttonNext.setEnabled(true);
         }
     }
 
